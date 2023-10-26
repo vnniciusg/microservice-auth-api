@@ -27,14 +27,6 @@ type FindByEmailRequest struct {
 	Email string `json:"email"`
 }
 
-type FindByEmailResponse struct {
-	ID        int    `json:"id"`
-	FirstName string `json:"firstname"`
-	LastName  string `json:"lastname"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
-}
-
 type DeleteUserRequest struct {
 	ID int `json:"id"`
 }

@@ -19,14 +19,14 @@ type UserService interface {
 
 type UserRepository interface {
 	Create(*dto.CreateUserRequest) (*dto.CreateUserResponse, error)
-	Fetch() ([]*dto.FetchUser, error)
+	Fetch() ([]*User, error)
 	Delete(userRequest *dto.DeleteUserRequest) error
-	FindByEmail(userRequest *dto.FindByEmailRequest) (*dto.FindByEmailResponse, error)
+	FindByEmail(userRequest *dto.FindByEmailRequest) (*User, error)
 }
 
 type UserUseCase interface {
 	Create(*dto.CreateUserRequest) (*dto.CreateUserResponse, error)
-	Fetch() ([]*dto.FetchUser, error)
+	Fetch() ([]*User, error)
 	Delete(userRequest *dto.DeleteUserRequest) error
-	FindByEmail(userRequest *dto.FindByEmailRequest) (*dto.FindByEmailResponse, error)
+	FindByEmail(userRequest *dto.FindByEmailRequest) (*User, error)
 }
