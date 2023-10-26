@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  db:
+    container-name: db_auth_api
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    volumes:
+      -db_data:/var/lib/mysql/data
+    ports:
+      - 3306:3306
+    networks:
+      - auth_api_network
+
+  auth_api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: auth-api
+    container_name: auth-api
+    env_file: .env
+    ports:
+      -"8080:8080"
+    depends_on:
+      - db
+    networks:
+      - auth_api_network
+
+volumes:
+  db_data:
+
+
+networks:
+  auth_api_network:
+    driver: bridge
